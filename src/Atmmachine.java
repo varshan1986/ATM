@@ -1,20 +1,17 @@
 import java.util.Scanner;
-
-
 public class Atmmachine {
 	private static Scanner in;
-	private static float balance=0;
+	private static float balance=0;//Initial Balance
 	private static int anothertransaction;
-	private static int Depositfre=4;
+	private static int Depositfre=4;//Frequency 
 	private static float Depositpertransaction=40000;
 	private static float Depositperday=150000;
-	private static int Withdrwalfre=3;
+	private static int Withdrwalfre=3;//Withdrwal Frequency 
 	private static float Withdrawamountperday=50000;
 	private static float Withdrawpertransaction=20000;
-	
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		in=new Scanner(System.in);
-		transaction();
+		transaction();//Getting the options 
 	}
 	private static void transaction(){
 		int choice;
@@ -25,11 +22,10 @@ public class Atmmachine {
 		System.out.println("4.Quit");
 		choice=in.nextInt();
 		switch(choice){
-		case 1:
+		case 1://Balance Case
 			System.out.println("CURRENT BALANCE IS "+balance+"\n");
 			anothertransaction();
-			
-		case 2:
+		case 2://Deposit Section 
 			float depositamount;
 			int Depositfre = 0;
 			int tempDepositfre;
@@ -44,11 +40,10 @@ public class Atmmachine {
 			System.out.println("The Frequency is "+tempDepositfre);
 			}else{
 				System.out.println("Please enter below this amount"+Depositpertransaction);
-				
 			}
 			anothertransaction();
 			break;
-		case 3:
+		case 3://Withdrwal 
 			float withdrawamount;
 			int Withdrwalfrequency=0;
 			int tempwithdrwaltfre;
@@ -69,23 +64,28 @@ public class Atmmachine {
 			}
 			else{
 				System.out.println("You have execited the limit");
-				
 			}
 			break;
-		case 4:
+		case 4://QUIT
+			 int decision;
+			 boolean yn;
 			System.out.println("QUIT");
-			System.out.println("Are you sure you want to quit?(yes/no)");
-			String decision;
-			decision = in.nextLine();
-			if(decision=="yes"){
-					
+			System.out.println("AreÂ youÂ sure youÂ wantÂ toÂ quit?(1 for Exit /0 for continue to use)");
+			decision = in.nextInt();
+			if(decision==1){
+				 yn = false;
+				 System.out.println("You are successfully closed the options");
+				 break;
 			}
 			else{
+				yn=true;
 				anothertransaction();
 			}
-			
+		default: 
+	        System.out.println("Invalid response"); 
 		}		
 		}
+	/* It is for calling the menu again*/
 	public static void anothertransaction(){
 		System.out.println("Do you want to Continue ?Press \n1 for another transaction\n5 To exit");
 		anothertransaction=in.nextInt();
